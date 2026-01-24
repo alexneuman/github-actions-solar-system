@@ -35,4 +35,4 @@ jobs:
           with:
             name: Mocha-Test-Result
             path: test-results.xml
-
+        - run: echo "${{ env.MONGO_PASSWORD }}"
