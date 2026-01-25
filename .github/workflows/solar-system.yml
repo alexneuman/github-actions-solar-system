@@ -44,7 +44,7 @@ jobs:
           with:
             node-version: 18
         - name: "Cache NPM dependencies"
-          uses: actions/setup@v4
+          uses: actions/cache@v4
           with:
             path: ~/.npm
             key: '${{runner.os}}-node-${{hashFiles(''package-lock.json'')}}'
@@ -56,4 +56,5 @@ jobs:
             name: Code-Coverage-Result
             path: coverage
             retention-days: 5
+
 
