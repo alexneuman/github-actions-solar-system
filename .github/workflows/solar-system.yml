@@ -66,13 +66,14 @@ jobs:
         - uses: docker/login-action@v3
           with:
             registry: ghcr.io
-            username: alexneuman
+            username: ${{ github.actor }}
             password: ${{ secrets.GITHUB_TOKEN }}
         - uses: docker/build-push-action@v6
           with:
             context: .
             push: true
             tags: 'ghcr.io/${{ github.repository_owner }}/solar-system:${{ github.sha }}'
+
 
 
 
