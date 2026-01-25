@@ -67,12 +67,13 @@ jobs:
           with:
             registry: ghcr.io
             username: ${{ github.actor }}
-            password: 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
+            password: ${{ secrets.GHCR_PAT }}
         - uses: docker/build-push-action@v6
           with:
             context: .
             push: true
             tags: 'ghcr.io/${{ github.repository_owner }}/solar-system:${{ github.sha }}'
+
 
 
 
