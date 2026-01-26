@@ -12,7 +12,7 @@ jobs:
   integration-test:
     runs-on: ubuntu-latest
     env:
-      URL: ${{ needs.dev-deploy.outputs.APP_INGRESS_URL }}
+      URL: ${{ inputs.ingress-url }}
     steps:
       - run: |
-          echo "Making call to: ${{ env.URL }}
+          echo "Making call to: ${{ env.URL }}"
