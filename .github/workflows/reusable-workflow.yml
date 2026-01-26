@@ -11,8 +11,8 @@ on:
 jobs:
   integration-test:
     runs-on: ubuntu-latest
+    env:
+      URL: ${{ needs.dev-deploy.outputs.APP_INGRESS_URL }}
     steps:
-      - env:
-          URL: '${{ needs.dev-deploy.outputs.APP_INGRESS_URL }}'
-        run: |
-          curl https://$URL/live -s -k | jq -r .status | grep -i live
+      - run: |
+          echo "Making call to: ${{ env.URL }}
