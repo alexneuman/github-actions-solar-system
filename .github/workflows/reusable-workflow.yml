@@ -1,18 +1,7 @@
 name: Testing - Reusable Workflow
 on: 
   workflow_call:
-    inputs:
-      ingress-url:
-        description: Provide the Ingress URL
-        
-        required: true
-        type: string
 
 jobs:
   integration-test:
     runs-on: ubuntu-latest
-    env:
-      URL: ${{ inputs.ingress-url }}
-    steps:
-      - run: |
-          echo "Making call to: ${{ env.URL }}"
