@@ -81,11 +81,11 @@ jobs:
         - name: Set Ingress URL
           id: set-url
           run: |
-            echo "app_ingress_url=https://my-test-ingress.dev >> $GITHUB_OUTPUT"
+            echo "app_ingress_url=https://my-test-ingress.dev" >> $GITHUB_OUTPUT"
         - name: install cluster
           uses: helm/kind-action@v1
         - run: |
-            sleep 60
+            sleep 10
             kubectl -n kube-system get pod
             set +e
             REPO_OWNER_LC="${GITHUB_REPOSITORY_OWNER,,}"
@@ -103,5 +103,6 @@ jobs:
       uses: ./.github/workflows/reusable-workflow.yml
       with:
         ingress-url: ${{ needs.dev-deploy.outputs.APP_INGRESS_URL }}
+
 
 
