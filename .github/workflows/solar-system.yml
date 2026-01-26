@@ -85,7 +85,7 @@ jobs:
         - name: install cluster
           uses: helm/kind-action@v1
         - run: |
-            sleep 10
+            sleep 3
             kubectl -n kube-system get pod
             set +e
             REPO_OWNER_LC="${GITHUB_REPOSITORY_OWNER,,}"
@@ -103,6 +103,7 @@ jobs:
       uses: ./.github/workflows/reusable-workflow.yml
       with:
         ingress-url: ${{ needs.dev-deploy.outputs.APP_INGRESS_URL }}
+
 
 
 
