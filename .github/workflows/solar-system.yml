@@ -106,9 +106,11 @@ jobs:
     run-integration-test:
       runs-on: ubuntu-latest
       steps:
+        - uses: actions/checkout@v4
         - uses: ./.github/workflows/reusable-workflow.yml
           with:
             ingress_url: ${{ needs.set-ingress-url.outputs.ingress_url }}
+
 
 
 
