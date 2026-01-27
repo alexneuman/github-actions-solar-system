@@ -96,6 +96,22 @@ jobs:
     #   uses: ./.github/workflows/reusable-workflow.yml
     #   with:
     #     ingress-url: ${{ needs.dev-deploy.outputs.APP_INGRESS_URL }}
+    set-ingress-url:
+      runs-on: ubuntu-latest
+      outputs:
+        ingress_url: ${{ steps.generate-ingress-url.outputs.ingress_url }}
+      steps:
+        - id: generate-ingress-url
+          run: echo "ingress_url=https://my-ingress.dev" >> $GITHUB_OUTPUT
+    run-integration-test:
+      runs-on: ubuntu-latest
+      steps:
+        - uses: ./.github/workflows/reusable-workflow.yml
+          with:
+            ingress_url: ${{ needs.set-ingress-url.outputs.ingress_url }}
+
+
+
 
 
 
